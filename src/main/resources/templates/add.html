@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>添加</title>
+    </head>
+    <body>
+        <div style="margin:0px auto; width:500px">
+            <form action="addUser" method="post">
+                <input name="id" type="hidden"/>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="mobName">联系人显示的名字: </label>
+                        </td>
+                        <td>
+                            <input id="mobName" name="mobName"/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="userName">联系人的名称: </label>
+                        </td>
+                        <td>
+                            <input id="userName" name="userName"/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="nickname">联系人的昵称: </label>
+                        </td>
+                        <td>
+                            <input id="nickname" name="nickname"/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="phone">联系人的电话: </label>
+                        </td>
+                        <td>
+                            <input id="phone" name="phone"/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="register">是否注册: </label>
+                        </td>
+                        <td>
+                            <select id="register" name="register">
+                                <option value="1" selected>是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td colspan="2">
+                            <button type="submit">提交</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>表单</title>
+    </head>
+    <body>
+        <div><a th:href="@{/add}">添加联系人</a></div>
+        <div>
+            <table width="100%" border="1">
+                <tr align="center">
+                    <td width="20%">联系人显示的名字</td>
+                    <td width="15%">联系人的名称</td>
+                    <td width="15%">联系人的昵称</td>
+                    <td width="30%">联系人的电话</td>
+                    <td width="10%">是否注册</td>
+                    <td colspan="2" width="10%">操作</td>
+                </tr>
+                <tr align="center" th:each="list: ${pages.list}">
+                    <td th:text="${list.mobName}"></td>
+                    <td th:text="${list.userName}"></td>
+                    <td th:text="${list.nickname}"></td>
+                    <td th:text="${list.phone}"></td>
+                    <td th:text="${list.register}==1?'是':'否'"></td>
+                    <td><a th:href="@{/findUser(id=${list.id})}">编辑</a></td>
+                    <td><a th:href="@{/deleteUser(id=${list.id})}">删除</a></td>
+                </tr>
+            </table>
+        </div>
+        <div align="center">
+            <a th:href="@{/listUser(start=0)}">首  页</a>
+            <a th:href="@{/listUser(start=${pages.pageNum-1})}">上一页</a>
+            <a th:href="@{/listUser(start=${pages.pageNum+1})}">下一页</a>
+            <a th:href="@{/listUser(start=${pages.pages})}">末  页</a>
+        </div>
+    </body>
+</html>

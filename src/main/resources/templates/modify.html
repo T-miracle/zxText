@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>编辑</title>
+    </head>
+    <body>
+        <div style="margin:0px auto; width:500px">
+            <form action="updateUser" method="post">
+                <input name="id" type="hidden" th:value="${Users.id}"/>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="mobName">联系人显示的名字: </label>
+                        </td>
+                        <td>
+                            <input id="mobName" name="mobName" th:value="${Users.mobName}"/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="userName">联系人的名称: </label>
+                        </td>
+                        <td>
+                            <input id="userName" name="userName" th:value="${Users.userName}"/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="nickname">联系人的昵称: </label>
+                        </td>
+                        <td>
+                            <input id="nickname" name="nickname" th:value="${Users.nickname}"/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="phone">联系人的电话: </label>
+                        </td>
+                        <td>
+                            <input id="phone" name="phone" th:value="${Users.phone}"/><br/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="register">是否注册: </label>
+                        </td>
+                        <td>
+                            <select id="register" name="register">
+                                <option value="1" th:selected="${Users.register}==1">是</option>
+                                <option value="0" th:selected="${Users.register}==0">否</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td colspan="2">
+                            <button type="submit">提交</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>
