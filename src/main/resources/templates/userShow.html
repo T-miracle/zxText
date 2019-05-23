@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>用户</title>
+    </head>
+    <body>
+        <div style="margin:0px auto; width:500px">
+            <table>
+                <tr>
+                    <td>
+                        <label for="mobName">联系人显示的名字: </label>
+                    </td>
+                    <td>
+                        <input type="text" id="mobName" name="mobName" th:value="${Users.mobName}" readonly/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="userName">联系人的名称: </label>
+                    </td>
+                    <td>
+                        <input type="text" id="userName" name="userName" th:value="${Users.userName}" readonly/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="nickname">联系人的昵称: </label>
+                    </td>
+                    <td>
+                        <input type="text" id="nickname" name="nickname" th:value="${Users.nickname}" readonly/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="phone">联系人的电话: </label>
+                    </td>
+                    <td>
+                        <input type="text" id="phone" name="phone" th:if="${Users.phone}" th:value="${Users.phone}" readonly/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="register">是否注册: </label>
+                    </td>
+                    <td>
+                        <select id="register" name="register" disabled>
+                            <option value="1" th:if="${Users.register}==1">是</option>
+                            <option value="0" th:if="${Users.register}==0">否</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr align="center">
+                    <td colspan="2">
+                        <a th:href="@{/listUser}">返回</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
