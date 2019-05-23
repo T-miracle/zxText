@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.tx.zhongxun.mapper.UsersMapper;
 import com.tx.zhongxun.pojo.Users;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,7 +28,7 @@ public class UserController {
     //查找(用于查询)
     @RequestMapping("getUser")
     public String getUser(int id, Model model) throws Exception {
-        Users Users= usersMapper.getUser(id);
+        Users Users = usersMapper.getUser(id);
         model.addAttribute("Users", Users);
         return "userShow";
     }
@@ -38,33 +39,39 @@ public class UserController {
         boolean flag = usersMapper.add(users) > 0;
         return "redirect:listUser";
     }
+
     //删除
     @RequestMapping("deleteUser")
     public String deleteUser(Users users) throws Exception {
         usersMapper.del(users.getId());
         return "redirect:listUser";
     }
+
     //修改
     @RequestMapping("updateUser")
     public String updateUser(Users Users) throws Exception {
         boolean flag = usersMapper.update(Users) > 0;
         return "redirect:listUser";
     }
+
     //查找(用于修改)
     @RequestMapping("findUser")
     public String findUser(int id, Model model) throws Exception {
-        Users Users= usersMapper.getUser(id);
+        Users Users = usersMapper.getUser(id);
         model.addAttribute("Users", Users);
         return "modify";
     }
+
     //遍历
     @RequestMapping("listUser")
-    public String listUser(Model model, @RequestParam(value = "start", defaultValue = "0") int start,
+    public String listUser(@RequestParam(value = "name",defaultValue = "") String name,
+                           Model model, @RequestParam(value = "start", defaultValue = "1") int start,
                            @RequestParam(value = "size", defaultValue = "2") int size) throws Exception {
-        PageHelper.startPage(start,size,"id asc");
-        List<Users> userList=usersMapper.getUsersList();
+        PageHelper.startPage(start, size, "id asc");
+        List<Users> userList = usersMapper.getUsersList(name);
         PageInfo<Users> page = new PageInfo<>(userList);
         model.addAttribute("pages", page);
+        model.addAttribute("name", name);
         return "index";
     }
 }

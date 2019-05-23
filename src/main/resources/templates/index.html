@@ -5,15 +5,20 @@
         <title>表单</title>
     </head>
     <body>
-        <div>
-            <a th:href="@{/add}">添加联系人</a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text"><button>搜索</button>
-        </div>
-        <div>
+        <div align="center">
+            <form action="" method="post">
+                <label for="name">全表查询：</label>
+                <input id="name" name="name" type="text" th:value="${name}">
+                <button type="submit">搜索</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{/add}">添加联系人</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{/listUser}">刷新全部数据</a>
+            </form>
             <table width="100%" border="1">
+
                 <tr align="center">
-                    <td width="20%" colspan="2">联系人显示的名字</td>
+                    <td width="20%">联系人显示的名字</td>
                     <td width="15%">联系人的名称</td>
                     <td width="15%">联系人的昵称</td>
                     <td width="30%">联系人的电话</td>
@@ -32,10 +37,10 @@
             </table>
         </div>
         <div align="center">
-            <a th:href="@{/listUser(start=0)}">首  页</a>
-            <a th:href="@{/listUser(start=${pages.pageNum-1})}">上一页</a>
-            <a th:href="@{/listUser(start=${pages.pageNum+1})}">下一页</a>
-            <a th:href="@{/listUser(start=${pages.pages})}">末  页</a>
+            <a th:if="${!pages.isFirstPage}" th:href="@{/listUser}">首 页</a>
+            <a th:if="${!pages.isFirstPage}" th:href="@{/listUser(start=${pages.hasPreviousPage}?${pages.prePage}:1)}">上一页</a>
+            <a th:if="${!pages.isLastPage}" th:href="@{/listUser(start=${pages.hasNextPage}?${pages.nextPage}:${pages.pages})}">下一页</a>
+            <a th:if="${!pages.isLastPage}" th:href="@{/listUser(start=${pages.pages})}">末 页</a>
         </div>
     </body>
 </html>
