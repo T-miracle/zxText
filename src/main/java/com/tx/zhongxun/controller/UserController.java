@@ -6,6 +6,7 @@ import com.tx.zhongxun.mapper.UsersMapper;
 import com.tx.zhongxun.pojo.Users;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -23,9 +24,17 @@ public class UserController {
         return "add";
     }
 
+    //查找(用于查询)
+    @RequestMapping("getUser")
+    public String getUser(int id, Model model) throws Exception {
+        Users Users= usersMapper.getUser(id);
+        model.addAttribute("Users", Users);
+        return "userShow";
+    }
+
     //添加
     @RequestMapping("addUser")
-    public String listUser(Users users) throws Exception {
+    public String listUser(Users users, BindingResult bindingResult) throws Exception {
         boolean flag = usersMapper.add(users) > 0;
         return "redirect:listUser";
     }

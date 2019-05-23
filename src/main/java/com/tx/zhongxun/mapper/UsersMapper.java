@@ -11,8 +11,8 @@ public interface UsersMapper {
     @Select("select * from users")
     List<Users> getUsersList();
 
-    @Insert("insert into users (mobName,userName,nickname,phone,register) " +
-            "values (#{mobName},#{userName},#{nickname},#{phone},#{register}) ")
+    @Insert("insert into users (id,mobName,userName,nickname,phone,register) " +
+            "values (#{id},#{mobName},#{userName},#{nickname},#{phone},#{register})")
     public int add(Users users);
 
     @Delete(" delete from users where id= #{id} ")
