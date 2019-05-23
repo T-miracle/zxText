@@ -6,15 +6,15 @@
     </head>
     <body>
         <div align="center">
-            <form action="" method="post">
+            <form action="#" th:action="@{/listUser}" method="post">
                 <label for="name">全表查询：</label>
-                <input id="name" name="name" type="text" th:value="${name}">
+                <input id="name" name="name" th:value="${name}">
                 <button type="submit">搜索</button>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{/add}">添加联系人</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{/listUser}">刷新全部数据</a>
             </form>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a th:href="@{/add}">添加联系人</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a th:href="@{/listUser}">刷新全部数据</a>
             <table width="100%" border="1">
 
                 <tr align="center">
@@ -37,10 +37,18 @@
             </table>
         </div>
         <div align="center">
-            <a th:if="${!pages.isFirstPage}" th:href="@{/listUser}">首 页</a>
-            <a th:if="${!pages.isFirstPage}" th:href="@{/listUser(start=${pages.hasPreviousPage}?${pages.prePage}:1)}">上一页</a>
-            <a th:if="${!pages.isLastPage}" th:href="@{/listUser(start=${pages.hasNextPage}?${pages.nextPage}:${pages.pages})}">下一页</a>
-            <a th:if="${!pages.isLastPage}" th:href="@{/listUser(start=${pages.pages})}">末 页</a>
+            <a th:unless="${pages.isFirstPage}"
+               th:href="@{/listUser(name=${name})}">首 页</a>
+            <a th:unless="${pages.isFirstPage}"
+               th:href="@{/listUser(start=${pages.hasPreviousPage}?${pages.prePage}:1, name=${name})}">上一页</a>
+            <a th:unless="${pages.isLastPage}"
+               th:href="@{/listUser(start=${pages.hasNextPage}?${pages.nextPage}:${pages.pages}, name=${name})}">下一页</a>
+            <a th:unless="${pages.isLastPage}"
+               th:href="@{/listUser(start=${pages.pages}, name=${name})}">末 页</a>
         </div>
+
+        <script type="text/javascript">
+
+        </script>
     </body>
 </html>
