@@ -64,6 +64,12 @@
             <artifactId>pagehelper</artifactId>
             <version>4.1.6</version>
         </dependency>
+        <!--引入JQuery库-->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>3.4.1</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -16,6 +16,7 @@ public class PageHelperConfig {
         properties.setProperty("rowBoundsWithCount", "true");
         properties.setProperty("reasonable", "true");
         pageHelper.setProperties(properties);
+
         return pageHelper;
     }
 }

@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <title>编辑</title>
     </head>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/modify.js}"></script>
     <body>
         <div style="margin:0px auto; width:500px">
             <form action="updateUser" method="post">
@@ -54,8 +56,8 @@
                     </tr>
                     <tr align="center">
                         <td colspan="2">
-                            <button type="submit">提交</button>
-                            <a th:href="@{/listUser}">返回</a>
+                            <button type="button" id="sb">提交</button>
+                            <button type="button" id="back">返回</button>
                         </td>
                     </tr>
                 </table>

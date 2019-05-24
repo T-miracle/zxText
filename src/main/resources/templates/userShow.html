@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <title>用户</title>
     </head>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/usrShow.js}"></script>
     <body>
         <div style="margin:0px auto; width:500px">
             <table>
@@ -52,7 +54,7 @@
                 </tr>
                 <tr align="center">
                     <td colspan="2">
-                        <a th:href="@{/listUser}">返回</a>
+                        <button id="back">返回</button>
                     </td>
                 </tr>
             </table>

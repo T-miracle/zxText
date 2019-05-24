@@ -4,12 +4,14 @@
         <meta charset="UTF-8">
         <title>表单</title>
     </head>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/index.js}"></script>
     <body>
         <div align="center">
             <form action="#" th:action="@{/listUser}" method="post">
                 <label for="name">全表查询：</label>
                 <input id="name" name="name" th:value="${name}">
-                <button type="submit">搜索</button>
+                <button id="search-btn" name="search-btn">搜索</button>
             </form>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a th:href="@{/add}">添加联系人</a>

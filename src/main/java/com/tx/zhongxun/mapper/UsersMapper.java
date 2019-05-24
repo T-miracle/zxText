@@ -9,7 +9,7 @@ import java.util.List;
 public interface UsersMapper {
 
     @Select("select * from users where CONCAT(mobName,userName,nickname,phone) like CONCAT('%',#{name},'%')")
-    List<Users> getUsersList(String name);
+    public List<Users> getUsersList(String name);
 
     @Insert("insert into users (id,mobName,userName,nickname,phone,register) " +
             "values (#{id},#{mobName},#{userName},#{nickname},#{phone},#{register})")

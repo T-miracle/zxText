@@ -63,7 +63,7 @@ public class UserController {
     }
 
     //遍历
-    @RequestMapping("listUser")
+    @RequestMapping({"/","listUser"})
     public String listUser(@RequestParam(value = "name",defaultValue = "") String name,
                            Model model, @RequestParam(value = "start", defaultValue = "1") int start,
                            @RequestParam(value = "size", defaultValue = "2") int size) throws Exception {
